@@ -11,13 +11,17 @@
 |
 */
 
-Route::get('/index', function () {
-    return view('index');
+Route::get('/lading-page', function () {
+    return view('landing');
+});
+Route::get('/', function () {
+    return redirect('/landing-page');
 });
 
-Route::get('/tambah data', function () {
-    return view('mailbox-folder');
-});
+Route::get('/admin','AdminController@index');
+Route::get('/tambah-baru','AdminController@create');
+
+
 Route::get('/login', function () {
     return view('login');
 });

@@ -38,8 +38,7 @@ class ParkirController extends Controller
     public function parkirin($id){
         DB::table('tb_parkir_in')->insert([
             'no_stnk'       => $id,
-            'tanggal'       => DB::raw('DATE(NOW())'),
-            'time_in'       => DB::raw('TIME(NOW())')
+            'waktu_masuk'       => DB::raw('NOW()')
         ]);
         return 'sukses';
     }
@@ -58,6 +57,8 @@ class ParkirController extends Controller
         }else{
             if($jam[1]>5){
                 $biaya = 2000;
+            }else{
+                $biaya = "Gratis!";
             }
         }
         DB::table('tb_parkir_out')->insert([
